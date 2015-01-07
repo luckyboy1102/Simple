@@ -1,10 +1,14 @@
 package com.totoro.simple.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
  * Created by Chen on 15-1-5.
  */
+@Entity
+@Table(name = "tb_user")
 public class TUser implements Serializable {
 
     private String id;

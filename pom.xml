@@ -38,6 +38,13 @@
             <artifactId>hibernate-annotations</artifactId>
             <version>3.4.0.GA</version>
         </dependency>
+
+        <!--JUnit-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+        </dependency>
     </dependencies>
 
 </project>
