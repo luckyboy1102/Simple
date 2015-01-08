@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:jee="http://www.springframework.org/schema/jee"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
-		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+
+
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
@@ -20,22 +17,22 @@
         <property name="username" value="${simple.jdbc.username}" />
         <property name="password" value="${simple.jdbc.password}" />
 
-        <!--数据库连接池保持的最小连接数-->
-        <property name="minIdle" value="${simple.jdbc.minIdle}" />
-        <!--数据库连接池保持的最大连接数-->
-        <property name="maxIdle" value="10" />
+        <!--&lt;!&ndash;数据库连接池保持的最小连接数&ndash;&gt;-->
+        <!--<property name="minIdle" value="${simple.jdbc.minIdle}" />-->
+        <!--&lt;!&ndash;数据库连接池保持的最大连接数&ndash;&gt;-->
+        <!--<property name="maxIdle" value="10" />-->
 
-        <!--
-            当数据库连接因为某种原因断掉之后，再重新从连接池中拿另外一个连接时实际上这个连接可能
-            已经无效，所以为了确保所拿到的连接全都有效需要在获取连接，返回连接以及连接空闲时进行
-            有效性验证 下面3个设置为ture时进行验证，默认为false
-         -->
-        <!-- 取得连接时是否进行有效性验证 -->
-        <property name="testOnBorrow" value="${simple.jdbc.testOnBorrow}" />
-        <!-- 返回连接时是否进行有效性验证 -->
-        <property name="testOnReturn" value="${simple.jdbc.testOnReturn}" />
-        <!-- 连接空闲时是否进行有效性验证 -->
-        <property name="testWhileIdle" value="${simple.jdbc.testWhileIdle}" />
+        <!--&lt;!&ndash;-->
+            <!--当数据库连接因为某种原因断掉之后，再重新从连接池中拿另外一个连接时实际上这个连接可能-->
+            <!--已经无效，所以为了确保所拿到的连接全都有效需要在获取连接，返回连接以及连接空闲时进行-->
+            <!--有效性验证 下面3个设置为ture时进行验证，默认为false-->
+         <!--&ndash;&gt;-->
+        <!--&lt;!&ndash; 取得连接时是否进行有效性验证 &ndash;&gt;-->
+        <!--<property name="testOnBorrow" value="${simple.jdbc.testOnBorrow}" />-->
+        <!--&lt;!&ndash; 返回连接时是否进行有效性验证 &ndash;&gt;-->
+        <!--<property name="testOnReturn" value="${simple.jdbc.testOnReturn}" />-->
+        <!--&lt;!&ndash; 连接空闲时是否进行有效性验证 &ndash;&gt;-->
+        <!--<property name="testWhileIdle" value="${simple.jdbc.testWhileIdle}" />-->
     </bean>
 
     <!--SessionFactory配置-->

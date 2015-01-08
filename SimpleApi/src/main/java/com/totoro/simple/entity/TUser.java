@@ -1,6 +1,9 @@
 package com.totoro.simple.entity;
 
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 
@@ -19,6 +22,8 @@ public class TUser implements Serializable {
 
     private String loginName;
 
+    @Id
+    @Column(name = "ID", unique = true, nullable = false, length = 32)
     public String getId() {
         return id;
     }
@@ -27,6 +32,7 @@ public class TUser implements Serializable {
         this.id = id;
     }
 
+    @Column(name = "NAME", length = 10)
     public String getName() {
         return name;
     }
@@ -35,6 +41,7 @@ public class TUser implements Serializable {
         this.name = name;
     }
 
+    @Column(name = "PASSWORD", length = 32)
     public String getPassword() {
         return password;
     }
@@ -43,6 +50,7 @@ public class TUser implements Serializable {
         this.password = password;
     }
 
+    @Column(name = "LOGINNAME", length = 32)
     public String getLoginName() {
         return loginName;
     }
