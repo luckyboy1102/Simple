@@ -1,10 +1,9 @@
 package com.totoro.simple.entity;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -24,6 +23,8 @@ public class TUser implements Serializable {
 
     @Id
     @Column(name = "ID", unique = true, nullable = false, length = 32)
+    @GenericGenerator(name = "generator", strategy = "uuid")
+    @GeneratedValue(generator = "generator")
     public String getId() {
         return id;
     }

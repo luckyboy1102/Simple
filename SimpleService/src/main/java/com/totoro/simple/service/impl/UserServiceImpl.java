@@ -12,6 +12,7 @@ import javax.annotation.Resource;
  * Created by admin on 2015/1/7.
  */
 @Service("UserServiceImpl")
+@Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
 
     @Resource(name = "UserDAOImpl")
@@ -23,6 +24,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(readOnly = false)
     public boolean save(TUser user) {
         return userDAO.save(user);
     }

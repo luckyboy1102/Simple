@@ -33,9 +33,8 @@ public class UserServiceImplTest {
     @Test
     public void testSave() throws Exception {
         TUser user = new TUser();
-        user.setId("123");
-        user.setName("Chen");
-        user.setPassword("chen");
+        user.setName("chenshuai");
+        user.setPassword("chenshuai");
         user.setLoginName("totoro");
         assertTrue(userService.save(user));
     }

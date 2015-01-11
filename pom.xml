@@ -10,33 +10,35 @@
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
+        <!-- Common libs -->
+
         <!--Spring-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>3.2.3.RELEASE</version>
+            <version>${spring.bom.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
-            <version>3.2.3.RELEASE</version>
+            <version>${spring.bom.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>3.2.3.RELEASE</version>
+            <version>${spring.bom.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>3.2.3.RELEASE</version>
+            <version>${spring.bom.version}</version>
         </dependency>
 
         <!--Hibernate-->
         <dependency>
             <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-annotations</artifactId>
-            <version>3.4.0.GA</version>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.bom.version}</version>
         </dependency>
 
         <!--JUnit-->
@@ -46,5 +48,10 @@
             <version>4.11</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <spring.bom.version>3.2.9.RELEASE</spring.bom.version>
+        <hibernate.bom.version>3.6.10.Final</hibernate.bom.version>
+    </properties>
 
 </project>
