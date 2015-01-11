@@ -17,6 +17,7 @@ hs_err_pid*
 # Generated files
 bin/
 gen/
+target/
 
 # Log Files
 *.log
