@@ -1,16 +1,29 @@
 package com.totoro.action.simple.login;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.totoro.simple.service.inter.UserService;
+
+import javax.annotation.Resource;
 
 /**
  * Created by Chen on 14-12-30.
  */
 public class UserAction extends ActionSupport {
 
-//    @Resource(name = "UserServiceImpl")
-//    private UserService userService;
+    @Resource(name = "UserServiceImpl")
+    private UserService userService;
 
     private String username;
+
+    private String password;
+
+    public String login() {
+        if (userService.login(username, password)) {
+            return "welcome";
+        } else {
+            return "login";
+        }
+    }
 
     public String getUsername() {
         return username;
@@ -20,12 +33,11 @@ public class UserAction extends ActionSupport {
         this.username = username;
     }
 
-    public String login() {
-        if ("chen".equals(username)) {
-            return "welcome";
-        } else {
-            return "login";
-        }
+    public String getPassword() {
+        return password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
