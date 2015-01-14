@@ -5,7 +5,7 @@
 <body>
 <h1>Struts 2 Hello World Example</h1>
 
-<s:form action="Welcome">
+<s:form action="user!welcome.action">
     <s:textfield name="username" label="Username"/>
     <s:password name="password" label="Password"/>
     <s:submit/>
