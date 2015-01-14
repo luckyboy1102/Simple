@@ -15,7 +15,8 @@ import static org.junit.Assert.assertTrue;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
         "classpath:applicationContext.xml",
-        "classpath:applicationContext-simple.xml"
+        "classpath:applicationContext-simple.xml",
+        "classpath:service-provider-simple.xml"
 })
 public class UserServiceImplTest {
 

@@ -18,11 +18,7 @@ public class UserAction extends ActionSupport {
     private String password;
 
     public String login() {
-        if (userService.login(username, password)) {
-            return "welcome";
-        } else {
-            return "login";
-        }
+        return "login";
     }
 
     public String getUsername() {

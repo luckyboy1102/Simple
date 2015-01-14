@@ -1,5 +1,6 @@
 package com.totoro.simple.action;
 
+import com.totoro.simple.entity.TUser;
 import com.totoro.simple.service.inter.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,5 +27,14 @@ public class ActionTest {
     @Test
     public void testLogin() throws Exception {
         assertTrue(userService.login("a", "a"));
+    }
+
+    @Test
+    public void testSave() {
+        TUser user = new TUser();
+        user.setName("chenshuai1");
+        user.setPassword("chenshuai1");
+        user.setLoginName("totoro");
+        assertTrue(userService.save(user));
     }
 }

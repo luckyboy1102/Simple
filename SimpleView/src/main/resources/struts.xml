@@ -3,9 +3,10 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
     <constant name="struts.codebehind.pathPrefix" value="/WEB-INF/jsp/"/>
-
-    <package name="user" extends="struts-default">
+    <constant name="struts.enable.SlashesInActionNames" value="true" />
+    <package name="default" extends="struts-default">
 
     </package>
 
