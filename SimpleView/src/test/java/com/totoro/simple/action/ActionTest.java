@@ -21,7 +21,7 @@ import static org.junit.Assert.assertTrue;
 })
 public class ActionTest {
 
-    @Resource(name = "UserServiceImpl")
+    @Resource(name = "UserService")
     private UserService userService;
 
     @Test
