@@ -89,7 +89,7 @@
                     <configuration>
                         <url>http://192.168.3.102:8080/manager/text</url>
                         <server>Catalina</server>
-                        <port>8080</port>
+                        <port>8081</port>
                         <path>/${project.name}</path>
                         <username>totoro</username>
                         <password>totoro</password>
@@ -102,7 +102,7 @@
                     <configuration>
                         <url>http://192.168.3.102:8080/manager/text</url>
                         <server>Catalina</server>
-                        <port>8080</port>
+                        <port>8081</port>
                         <path>/${project.name}</path>
                         <username>totoro</username>
                         <password>totoro</password>
