@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by admin on 2015/1/7.
@@ -20,7 +22,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean login(String userName, String password) {
-        return userDAO.login(userName, password);
+        Map<String, Object> condition = new HashMap<String, Object>();
+        condition.put("loginName", userName);
+        condition.put("password", password);
+
+        return userDAO.getUserByConditoin(condition) != null;
     }
 
     @Override

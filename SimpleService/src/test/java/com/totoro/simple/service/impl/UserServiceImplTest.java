@@ -28,7 +28,7 @@ public class UserServiceImplTest {
 
     @Test
     public void testLogin() throws Exception {
-        assertTrue(userService.login("a", "a"));
+        assertTrue(userService.login("chenshuai1", "chenshuai1"));
     }
 
     @Test
