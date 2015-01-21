@@ -9,9 +9,12 @@ import org.hibernate.SessionFactory;
 import org.junit.Assert;
 
 import javax.annotation.Resource;
+import java.lang.reflect.ParameterizedType;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 /**
  * DAO通用方法
@@ -23,6 +26,22 @@ public class BaseDAO<T> implements FrameworkDAO<T> {
 
     // 日志
     protected final Log logger = LogFactory.getLog(getClass());
+    // 实体对象类
+    protected Class<T> entityClass;
+    // 实体对象名称
+    protected String entityClassName;
+
+    /**
+     * 获取实体类对象
+     */
+    public BaseDAO() {
+        if ((getClass().getGenericSuperclass() instanceof ParameterizedType)) {
+            this.entityClass = (Class)((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        } else {
+            this.entityClass = (Class)((ParameterizedType)((Class) getClass().getGenericSuperclass()).getGenericSuperclass()).getActualTypeArguments()[0];
+        }
+        this.entityClassName = entityClass.getSimpleName();
+    }
 
     @Resource(name = "sessionFactory")
     public void setSessionFactory(SessionFactory sessionFactory) {
@@ -79,6 +98,29 @@ public class BaseDAO<T> implements FrameworkDAO<T> {
             }
         }
         return data == null ? Collections.<T> emptyList() : data;
+    }
+
+    /**
+     * 根据Map中的键值对进行查询
+     * 需保证键为实体中的变量名
+     * @param map
+     * @return
+     */
+    public List<T> find(Map<String, Object> map) {
+        String objectName = entityClassName.toLowerCase();
+        StringBuilder hql = new StringBuilder("from " + entityClassName + " " + objectName + " where ");
+
+        List<String> columns = new ArrayList<String>();
+        columns.addAll(map.keySet());
+
+        for (int i = 0; i < columns.size(); i++) {
+            if (i != 0) {
+                hql.append("and ");
+            }
+            hql.append(objectName + "." + columns.get(i) + " = ? ");
+        }
+
+        return find(hql.toString(), map.values().toArray());
     }
 
     private void setParameters(Query query, Object[] paramlist) {
