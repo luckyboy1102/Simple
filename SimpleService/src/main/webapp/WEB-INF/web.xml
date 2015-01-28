@@ -9,6 +9,7 @@
         <param-value>
             classpath:applicationContext.xml,
             classpath:applicationContext-simple.xml,
+            classpath:applicationContext-amq.xml,
             classpath:service-provider-simple.xml
         </param-value>
     </context-param>

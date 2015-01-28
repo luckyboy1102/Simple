@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
         "classpath:applicationContext.xml",
-        "classpath:applicationContext-simple.xml"
+        "classpath:applicationContext-amq.xml"
 })
 public class SendServiceImplTest {
 
