@@ -75,6 +75,7 @@
         <spring.bom.version>3.2.9.RELEASE</spring.bom.version>
         <hibernate.bom.version>3.6.10.Final</hibernate.bom.version>
         <struts.bom.version>2.3.20</struts.bom.version>
+        <activemq.bom.version>5.10.1</activemq.bom.version>
     </properties>
 
 </project>

@@ -4,11 +4,18 @@
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+		                   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
-
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
-
+    <!-- 将多个配置文件读取到容器中，交给Spring管理 -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:appconfig.properties</value>
+                <value>classpath:activemq.properties</value>
+            </list>
+        </property>
+    </bean>
 
     <!--数据源配置-->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -55,6 +62,35 @@
                 <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
             </props>
         </property>
+    </bean>
+
+    <!--真正可以产生Connection的ConnectionFactory，由对应的 JMS服务厂商提供-->
+    <bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="${activemq.brokerURL}"/>
+    </bean>
+
+    <bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
+        <property name="connectionFactory" ref="targetConnectionFactory"/>
+        <property name="maxConnections" value="${activemq.maxConnections}"/>
+    </bean>
+
+    <!--Spring用于管理真正的ConnectionFactory的ConnectionFactory-->
+    <bean id="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
+        <!--目标ConnectionFactory对应真实的可以产生JMS Connection的ConnectionFactory-->
+        <property name="targetConnectionFactory" ref="pooledConnectionFactory"/>
+    </bean>
+
+    <!--定义消息目标-->
+    <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg index="0" value="queue_temp"/>
+    </bean>
+
+    <!--Spring提供的JMS工具类，它可以进行消息发送、接收等-->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <!--这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象-->
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <!--配置消息目标-->
+        <property name="defaultDestination" ref="destination" />
     </bean>
 
     <!--事务管理器-->
