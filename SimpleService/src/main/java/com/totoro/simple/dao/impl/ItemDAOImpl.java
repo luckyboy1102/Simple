@@ -13,7 +13,7 @@ import java.util.Map;
  * Created by Chen on 2015/2/12.
  */
 @Repository("ItemDAOImpl")
-public class ItemDAOImplImpl extends FrameworkDAOImpl<TItem> implements ItemDAO {
+public class ItemDAOImpl extends FrameworkDAOImpl<TItem> implements ItemDAO {
 
     @Override
     public List<TItem> getItemListByCondition(Map<String, Object> condition) {

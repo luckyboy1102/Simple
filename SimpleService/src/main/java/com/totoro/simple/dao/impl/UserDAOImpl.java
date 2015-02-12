@@ -13,7 +13,7 @@ import java.util.Map;
  * Created by Chen on 15-1-5.
  */
 @Repository("UserDAOImpl")
-public class UserDAOImplImpl extends FrameworkDAOImpl<TUser> implements UserDAO {
+public class UserDAOImpl extends FrameworkDAOImpl<TUser> implements UserDAO {
 
     @Override
     public TUser getUserByConditoin(Map<String, Object> condition) {
