@@ -1,5 +1,7 @@
 package com.totoro.simple.service.impl;
 
+import com.totoro.framework.dao.inter.FrameworkDAO;
+import com.totoro.framework.service.FrameworkServiceImpl;
 import com.totoro.simple.dao.inter.UserDAO;
 import com.totoro.simple.entity.TUser;
 import com.totoro.simple.service.inter.UserService;
@@ -11,11 +13,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by admin on 2015/1/7.
+ * 用户服务接口实现
+ * Created by Chen on 2015/1/7.
  */
 @Service("UserServiceImpl")
 @Transactional(readOnly = true)
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends FrameworkServiceImpl<TUser> implements UserService {
 
     @Resource(name = "UserDAOImpl")
     private UserDAO userDAO;
@@ -30,8 +33,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional(readOnly = false)
-    public boolean save(TUser user) {
-        return userDAO.save(user);
+    @Resource(name = "UserDAOImpl")
+    public void setFrameworkDAO(FrameworkDAO frameworkDAO) {
+        this.frameworkDAO = userDAO;
     }
 }

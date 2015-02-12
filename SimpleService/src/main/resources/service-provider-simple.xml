@@ -13,4 +13,5 @@
 
     <dubbo:service interface="com.totoro.simple.service.inter.UserService" ref="UserServiceImpl" retries="0" />
 
+    <dubbo:service interface="com.totoro.simple.service.inter.ItemService" ref="ItemServiceImpl" retries="0" />
 </beans>
