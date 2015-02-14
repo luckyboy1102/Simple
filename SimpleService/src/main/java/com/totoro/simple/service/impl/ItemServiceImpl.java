@@ -31,6 +31,6 @@ public class ItemServiceImpl extends FrameworkServiceImpl<TItem> implements Item
     @Override
     @Resource(name = "ItemDAOImpl")
     public void setFrameworkDAO(FrameworkDAO frameworkDAO) {
-        this.frameworkDAO = itemDAO;
+        this.frameworkDAO = frameworkDAO;
     }
 }

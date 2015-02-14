@@ -35,6 +35,6 @@ public class UserServiceImpl extends FrameworkServiceImpl<TUser> implements User
     @Override
     @Resource(name = "UserDAOImpl")
     public void setFrameworkDAO(FrameworkDAO frameworkDAO) {
-        this.frameworkDAO = userDAO;
+        this.frameworkDAO = frameworkDAO;
     }
 }
