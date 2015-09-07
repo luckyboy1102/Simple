@@ -66,7 +66,6 @@ public abstract class FrameworkDAOImpl<T extends Serializable> implements Framew
         }
     }
 
-    @Override
     public boolean save(T entity) {
         boolean flag;
         Assert.assertNotNull(entity);
@@ -82,7 +81,6 @@ public abstract class FrameworkDAOImpl<T extends Serializable> implements Framew
         return flag;
     }
 
-    @Override
     public T getById(String id) {
         return (T) getSession().get(entityClass, id);
     }

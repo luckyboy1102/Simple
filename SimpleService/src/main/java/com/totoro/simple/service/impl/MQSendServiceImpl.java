@@ -23,7 +23,6 @@ public class MQSendServiceImpl implements MQSendService {
 
     public void send(final String message) {
         jmsTemplate.send(new MessageCreator() {
-            @Override
             public Message createMessage(Session session) throws JMSException {
                 TextMessage textMessage = session.createTextMessage(message);
                 return textMessage;

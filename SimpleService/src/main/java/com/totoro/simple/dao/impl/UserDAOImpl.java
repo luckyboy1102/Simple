@@ -15,8 +15,7 @@ import java.util.Map;
 @Repository("UserDAOImpl")
 public class UserDAOImpl extends FrameworkDAOImpl<TUser> implements UserDAO {
 
-    @Override
-    public TUser getUserByConditoin(Map<String, Object> condition) {
+    public TUser getUserByCondition(Map<String, Object> condition) {
         List<TUser> list = find(condition);
         if (list.size() > 0) {
             return list.get(0);

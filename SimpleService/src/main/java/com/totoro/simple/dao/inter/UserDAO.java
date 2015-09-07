@@ -11,5 +11,5 @@ import java.util.Map;
  */
 public interface UserDAO extends FrameworkDAO<TUser> {
 
-    public TUser getUserByConditoin(Map<String, Object> condition);
+    public TUser getUserByCondition(Map<String, Object> condition);
 }

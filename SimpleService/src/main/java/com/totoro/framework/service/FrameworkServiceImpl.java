@@ -15,13 +15,11 @@ public abstract class FrameworkServiceImpl<T extends Serializable> implements Fr
 
     protected FrameworkDAO<T> frameworkDAO;
 
-    @Override
     @Transactional(readOnly = false)
     public boolean save(T entity) {
         return frameworkDAO.save(entity);
     }
 
-    @Override
     public T getById(String id) {
         return frameworkDAO.getById(id);
     }

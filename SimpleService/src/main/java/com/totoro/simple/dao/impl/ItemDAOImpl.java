@@ -15,7 +15,6 @@ import java.util.Map;
 @Repository("ItemDAOImpl")
 public class ItemDAOImpl extends FrameworkDAOImpl<TItem> implements ItemDAO {
 
-    @Override
     public List<TItem> getItemListByCondition(Map<String, Object> condition) {
         return find(condition);
     }

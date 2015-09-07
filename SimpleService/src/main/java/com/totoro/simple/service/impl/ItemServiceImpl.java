@@ -23,7 +23,6 @@ public class ItemServiceImpl extends FrameworkServiceImpl<TItem> implements Item
     @Resource(name = "ItemDAOImpl")
     private ItemDAO itemDAO;
 
-    @Override
     public List<TItem> getItemListByCondition(Map<String, Object> condition) {
         return itemDAO.getItemListByCondition(condition);
     }

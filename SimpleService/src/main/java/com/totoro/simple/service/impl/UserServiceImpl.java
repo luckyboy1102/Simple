@@ -23,13 +23,12 @@ public class UserServiceImpl extends FrameworkServiceImpl<TUser> implements User
     @Resource(name = "UserDAOImpl")
     private UserDAO userDAO;
 
-    @Override
     public boolean login(String userName, String password) {
         Map<String, Object> condition = new HashMap<String, Object>();
         condition.put("loginName", userName);
         condition.put("password", password);
 
-        return userDAO.getUserByConditoin(condition) != null;
+        return userDAO.getUserByCondition(condition) != null;
     }
 
     @Override
